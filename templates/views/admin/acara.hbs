@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+{{>head}}
+
+<body class="hold-transition skin-yellow  sidebar-mini">
+  <div class="wrapper">
+    {{>header_admin}}
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <!--------------------------
+        | Your Page Content Here |
+        -------------------------->
+      <!-- Main content -->
+      <section class="content">
+
+        <!-- Default box -->
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Menu Penambahan Acara</h3>
+            <div class="box-tools pull-right">
+              <div class="box box-primary">
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Judul</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Judul">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Deskripsi</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Deskripsi">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Gratis</label>
+                      <select class="form-control select2" style="width: 100%;">
+                        <option selected="selected">Ya</option>
+                        <option>Tidak</option>
+                      </select>
+                    </div>
+                    <label>Tanggal Mulai:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date" class="form-control pull-right" id="datepicker">
+                    </div>
+
+                    <label>Tanggal Selesai:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date" class="form-control pull-right" id="datepicker2">
+                    </div>
+                    <label>Statsiun</label>
+                    <select class="form-control select2" style="width: 100%;">
+                      <option selected="selected">Gambir</option>
+                      <option>Pasar Senen</option>
+                      <option>Manggarai</option>
+                      <option>Jakarta Kota</option>
+                      <option>Universitas Indonesia</option>
+                      <option>Depok</option>
+                    </select>
+                    <div class="box-footer">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Tabel Daftar Acara</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Judul</th>
+                      <th>Deskripsi</th>
+                      <th>Tanggal mulai</th>
+                      <th>Tanggal akhir</th>
+                      <th>Is free</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Festival Musik Jazz
+                      </td>
+                      <td> Undang raisa</td>
+                      <td>15 April 2019</td>
+                      <td>15 April 2019</td>
+                      <td>yes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.box-body -->
+            </div>
+          </div>
+          <!-- /.box -->
+      </section>
+      <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  {{>footer_admin}}
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+
+    <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+    {{>scriptjs}}
+</body>
+
+</html>

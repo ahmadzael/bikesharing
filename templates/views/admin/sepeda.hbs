@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+{{>head}}
+
+<body class="hold-transition skin-yellow  sidebar-mini">
+  <div class="wrapper">
+    {{>header_admin}}
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <!--------------------------
+        | Your Page Content Here |
+        -------------------------->
+      <!-- Main content -->
+      <section class="content">
+
+        <!-- Default box -->
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Menu Penambahan Sepeda</h3>
+
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                title="Collapse">
+                <i class="fa fa-minus"></i></button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+
+            <form role="form">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Merek</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Merek">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Jenis</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Jenis">
+                </div>
+                <div class="form-group">
+                  <label>Status</label>
+                  <select class="form-control select2" style="width: 100%;">
+                    <option selected="selected">Tersedia</option>
+                    <option>Tidak Tersedia</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Statsiun</label>
+                  <select class="form-control select2" style="width: 100%;">
+                    <option selected="selected">Gambir</option>
+                    <option>Pasar Senen</option>
+                    <option>Manggarai</option>
+                    <option>Jakarta Kota</option>
+                    <option>Universitas Indonesia</option>
+                    <option>Depok</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Penyumbang</label>
+                  <select class="form-control select2" style="width: 100%;">
+                    <option selected="selected">Ahmad</option>
+                    <option>Jaelani Sidiq/option>
+                    <option>Dedik</option>
+                    <option>Nadjib</option>
+                    <option>Nouval</option>
+                    <option>Ainun</option>
+                  </select>
+                </div>
+              </div>
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Nomor</th>
+                    <th>Merk</th>
+                    <th>Jenis</th>
+                    <th>Stasiun</th>
+                    <th>Status</th>
+                    <th>Penyumbang</th>
+                    <th>Action</th>
+                    <th>Action</th>
+                  </tr>
+                  </tbody>
+                </thead>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+      </section>
+      <!-- /.content -->
+
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  {{>footer_admin}}
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+
+    <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+    {{>scriptjs}}
+</body>
+
+</html>

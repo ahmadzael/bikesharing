@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+{{>head}}
+
+<body class="hold-transition skin-yellow  sidebar-mini">
+  <div class="wrapper">
+    {{>header_admin}}
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <!--------------------------
+        | Your Page Content Here |
+        -------------------------->
+      <!-- Main content -->
+      <section class="content">
+
+        <!-- Default box -->
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Penambahan Voucher</h3>
+
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                title="Collapse">
+                <i class="fa fa-minus"></i></button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <form role="form">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Nama</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama Statsiun">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Kategori</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Kategori">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Nilai poin</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nilai Poin">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Deskripsi</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Deskripsi">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Jumlah</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Jumlah">
+                </div>
+              </div>
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Id voucher</th>
+                    <th>Nama</th>
+                    <th>kategori</th>
+                    <th>Nilai poin</th>
+                    <th>Deskrip si</th>
+                    <th>Diklaim oleh</th>
+                    <th>Action [admin]</th>
+                    <th>Action [anggota]</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>1111q</td>
+                  <td>Voucher belanja</td>
+                  <td>Belanja</td>
+                  <td>300</td>
+                  <td>Gratis belanja</td>
+                  <td>-</td>
+                  <td>[Update] [Delete]</td>
+                  <td>[Klaim]</td>
+                </tr>
+                <tr>
+                  <td>95675</td>
+                  <td>Voucher makan</td>
+                  <td>Makan</td>
+                  <td>100</td>
+                  <td>Makan gratis</td>
+                  <td>-</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+      </section>
+      <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  {{>footer_admin}}
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+
+    <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+    {{>scriptjs}}
+</body>
+
+</html>
