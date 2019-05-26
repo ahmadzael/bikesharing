@@ -95,13 +95,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Festival Musik Jazz
-                      </td>
+                      <td>-</td>
                       <td> Undang raisa</td>
                       <td>15 April 2019</td>
                       <td>15 April 2019</td>
                       <td>yes</td>
                     </tr>
+                    </script>
                   </tbody>
                 </table>
               </div>
@@ -125,6 +125,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- ./wrapper -->
     {{>scriptjs}}
+    <script type="text/javascript">
+      $(document).ready(function() { 
+         $.ajax({
+          url: 'http://localhost:3000/api/acara',
+          contentType: "application/json",
+          dataType: 'json',
+          success: function({ data: { rows } }) {
+            $('#example1').DataTable({
+              'paging'      : true,
+              'lengthChange': false,
+              'searching'   : true,
+              'ordering'    : false,
+              'info'        : true,
+              'autoWidth'   : false,
+            }) 
+          },
+          error: function(e) {
+            console.log(e.message);
+          }
+        });
+      })
+    </script>
 </body>
 
 </html>

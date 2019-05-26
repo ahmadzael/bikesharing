@@ -1,6 +1,11 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+const bodyParser = require('body-parser')
+
+
+var router = express.Router();
+var db = require('./queries');
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -19,6 +24,8 @@ hbs.registerPartials(partialPath)
 //Setup static directory
 app.use(express.static(publicDirectoryPath))
 app.use(express.static(bower_components))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.get('',(req,res)=>{
     res.render('login')
@@ -95,6 +102,20 @@ app.get('/laporan',(req,res) =>{
 app.get('/register',(req,res) =>{
     res.render('register')
 })
+
+
+app.get('/api/acara', db.getAllAcara);
+app.get('/api/acara/:id', db.getSingleAcara);
+app.put('/api/acara/:id', db.updateAcara);
+
+//router.get('/api/acara', db.getAllAcara);
+// router.get('/api/acara/:id', db.getSingleAcara);
+// router.post('/api/acara', db.createAcara);
+// router.put('/api/acara/:id', db.updateAcara);
+// router.delete('/api/acara/:id', db.removeAcara);
+
+
+module.exports = router;
 
 app.listen(port,() => {
     console.log('server is running on port'+ port)
