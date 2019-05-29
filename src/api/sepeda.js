@@ -1,16 +1,16 @@
 var db = require('../database');
 
 module.exports = {
-  getAllPerson: getAllPerson,
-  getSinglePerson: getSinglePerson,
-  createPerson: createPerson,
-  updatePerson: updatePerson,
-  removePerson: removePerson
+  getAllSepeda: getAllSepeda,
+  getSingleSepeda: getSingleSepeda,
+  createSepeda: createSepeda,
+  updateSepeda: updateSepeda,
+  removeSepeda: removeSepeda
 };
 
 
-function getAllPerson(req, res, next) {
-  db.result('select * from Person')
+function getAllSepeda(req, res, next) {
+  db.result('select * from Sepeda')
     .then(function (data) {
       res.status(200)
         .json({
@@ -24,15 +24,15 @@ function getAllPerson(req, res, next) {
     });
 }
 
-function getSinglePerson(req, res, next) {
-  var PersonID = req.params.id;
-  db.one('select * from Person where ktp = $1', PersonID)
+function getSingleSepeda(req, res, next) {
+  var SepedaID = req.params.id;
+  db.one('select * from Sepeda where ktp = $1', SepedaID)
     .then(function (data) {
       res.status(200)
         .json({
           status: 'success',
           data: data,
-          message: 'Retrieved ONE Person'
+          message: 'Retrieved ONE Sepeda'
         });
     })
     .catch(function (err) {
@@ -40,15 +40,15 @@ function getSinglePerson(req, res, next) {
     });
 }
 
-function createPerson(req, res, next) {
-  db.none('insert into Person(email, nama, alamat, tgl_lahir , no_telp , ktp)' +
+function createSepeda(req, res, next) {
+  db.none('insert into Sepeda(email, nama, alamat, tgl_lahir , no_telp , ktp)' +
       'values(${email}, ${nama}, ${alamat}, ${tgl_lahir}, ${no_telp}, ${ktp})',
     req.body)
     .then(function () {
       res.status(200)
         .json({
           status: 'success',
-          message: 'Inserted one Person'
+          message: 'Inserted one Sepeda'
         });
     })
     .catch(function (err) {
@@ -57,8 +57,8 @@ function createPerson(req, res, next) {
 }
 
 
-function updatePerson(req, res, next) {
-  db.none('update Person set email=$1, nama=$2, alamat=$3, tgl_lahir=$4, no_telp=$5 statsiun=$6 where ktp=$7',
+function updateSepeda(req, res, next) {
+  db.none('update Sepeda set email=$1, nama=$2, alamat=$3, tgl_lahir=$4, no_telp=$5 statsiun=$6 where ktp=$7',
     [req.body.email,
       req.body.nama, req.body.alamat,
       req.body.tgl_lahir, req.body.no_telp, req.params.id])
@@ -66,7 +66,7 @@ function updatePerson(req, res, next) {
       res.status(200)
         .json({
           status: 'success',
-          message: 'Updated Person'
+          message: 'Updated Sepeda'
         });
     })
     .catch(function (err) {
@@ -74,15 +74,15 @@ function updatePerson(req, res, next) {
     });
 }
 
-function removePerson(req, res, next) {
-  var PersonID = req.params.id;
-  db.result('delete from Person where ktp = $1', PersonID)
+function removeSepeda(req, res, next) {
+  var SepedaID = req.params.id;
+  db.result('delete from Sepeda where ktp = $1', SepedaID)
     .then(function (result) {
       /* jshint ignore:start */
       res.status(200)
         .json({
           status: 'success',
-          message: `Removed ${result.rowCount} Person`
+          message: `Removed ${result.rowCount} Sepeda`
         });
       /* jshint ignore:end */
     })

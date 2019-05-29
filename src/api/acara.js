@@ -6,8 +6,6 @@ module.exports = {
   createAcara: createAcara,
   updateAcara: updateAcara,
   removeAcara: removeAcara
-  
-  //getAllSepeda:getAllSepeda
 };
 
 
@@ -57,8 +55,6 @@ function createAcara(req, res, next) {
       return next(err);
     });
 }
-
-//'update acara set judul=$1, deskripsi=$2, tgl_mulai=$3, tgl_akhir=$4, is_free=$5 where id_acara=$6'
 
 function updateAcara(req, res, next) {
   db.none('update acara set judul=$1, deskripsi=$2, tgl_mulai=$3, tgl_akhir=$4, is_free=$5 statsiun=$6 where id_acara=$7',
