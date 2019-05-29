@@ -93,15 +93,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>-</td>
-                      <td> Undang raisa</td>
-                      <td>15 April 2019</td>
-                      <td>15 April 2019</td>
-                      <td>yes</td>
-                    </tr>
-                    </script>
+                  <div id="contenttemplate"></div>
                   </tbody>
                 </table>
               </div>
@@ -125,27 +117,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- ./wrapper -->
     {{>scriptjs}}
+  <script src="../../../dist/js/handlebars-v4.1.2.js"></script>
+    
     <script type="text/javascript">
       $(document).ready(function() { 
-         $.ajax({
-          url: 'http://localhost:3000/api/acara',
-          contentType: "application/json",
-          dataType: 'json',
-          success: function({ data: { rows } }) {
-            $('#example1').DataTable({
-              'paging'      : true,
-              'lengthChange': false,
-              'searching'   : true,
-              'ordering'    : false,
-              'info'        : true,
-              'autoWidth'   : false,
-            }) 
-          },
-          error: function(e) {
-            console.log(e.message);
-          }
-        });
-      })
+            var myInfo = "<tr><td>{{id_acara}}</td><td>{{judul}}</td></tr>";
+            var template = Handlebars.compile(myInfo);
+
+            var data = template({id_acara: 10, judul: "Bebas"});
+            console.log(data)
+            document.getElementById("contenttemplate").innerHTML += data;
+          
+      });
     </script>
 </body>
 

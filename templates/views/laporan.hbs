@@ -39,36 +39,13 @@
                     <th>Nominal</th>
                   </tr>
                 </thead>
+                {{#each data}}
                 <tbody>
                   <tr>
-                    <td>1</td>
-                    <td>5 April 2019
-                    </td>
-                    <td> Top Up </td>
-                    <td>200000</td>
+                    <td>{{no}}</td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>5 April 2019
-                    </td>
-                    <td>Peminjaman</td>
-                    <td>-500000</td>
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
+                {{/each}}
                 </tbody>
-                <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Tanggal</th>
-                    <th>Jenis Transaksi</th>
-                    <th>Nominal</th>
-                  </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
@@ -89,6 +66,7 @@
   <!-- ./wrapper -->
 
   {{>scriptjs}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
 </body>
 
 </html>

@@ -91,9 +91,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <th>Action</th>
                     <th>Action</th>
                   </tr>
-                  </tbody>
                 </thead>
-              </table>
+                <tbody>
+                  {{!-- <script id='mytemplate' type='text/x-handlebars-template'>
+                    {{#each data}}
+                    <tr>
+                      <td>{{nomor}}</td>
+                    </tr>
+                    {{/each}}
+                  </script> --}}
+               </tbody>
+              </table>  
             </div>
             <!-- /.box-body -->
           </div>
@@ -119,6 +127,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- ./wrapper -->
     {{>scriptjs}}
+    <script type="text/javascript">
+      $(document).ready(function() { 
+        console.log(data)
+      })
+    </script>
 </body>
 
 </html>

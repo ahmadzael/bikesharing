@@ -1,14 +1,20 @@
 const path = require('path')
 const express = require('express')
+const exphbs = require('express-handlebars');
 const hbs = require('hbs')
 const bodyParser = require('body-parser')
 
 
 var router = express.Router();
-var db = require('./queries');
+var db = require('./database');
+// var requireDir = require('require-dir',{recurse:true});
+// var api = requireDir('./api');
+
+var apiLaporan = require('./api/laporan');
+var apiAcara = require('./api/acara');
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 //define path
 const publicDirectoryPath = path.join(__dirname,'../public')
@@ -16,7 +22,23 @@ const bower_components = path.join(__dirname ,'../bower_components')
 const viewsPath = path.join(__dirname,'../templates/views')
 const partialPath = path.join(__dirname,'../templates/partial')
 
+app.use((res, req, next) => {
+	req.header('Access-Control-Allow-Origin', 'http://localhost:3000')
+	res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+
+	if (req.method === 'OPTIONS') {
+		res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, GET, DELETE')
+		return res.status(200).json({})
+	}
+	next()
+})
+
 //Setup Handlebar
+app.engine('handlebars', exphbs());
+// Use Handlebars view engine
+app.set('view engine', 'handlebars');
+
 app.set('view engine','hbs')
 app.set('views',viewsPath)
 hbs.registerPartials(partialPath)
@@ -95,18 +117,28 @@ app.get('/anggota/daftar_voucher',(req,res) =>{
     res.render('anggota/daftar_voucher')
 })
 
-app.get('/laporan',(req,res) =>{
-    res.render('laporan')
-})
+// app.get('/laporan',(req,res) =>{
+//     res.render('laporan')
+// })
 
 app.get('/register',(req,res) =>{
     res.render('register')
 })
 
+//Rest API
+app.get('/api/acara', apiAcara.getAllAcara);
+app.get('/api/acara/:id', apiAcara.getSingleAcara);
+app.put('/api/acara/:id', apiAcara.updateAcara);
+app.post('/api/acara', apiAcara.createAcara);
+app.delete('/api/acara/:id', apiAcara.removeAcara);
 
-app.get('/api/acara', db.getAllAcara);
-app.get('/api/acara/:id', db.getSingleAcara);
-app.put('/api/acara/:id', db.updateAcara);
+// app.get('/api/sepeda',db.getAllSepeda);
+
+//routing
+//app.use('/api/laporan', require('./api/laporan'))
+
+app.get('/api/laporan',apiLaporan.getAllLaporan);
+
 
 //router.get('/api/acara', db.getAllAcara);
 // router.get('/api/acara/:id', db.getSingleAcara);
