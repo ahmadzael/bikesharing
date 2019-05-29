@@ -12,7 +12,7 @@ module.exports = {
 
 
 function getAllStasiun(req, res, next) {
-  db.result('select * from Stasiun')
+  db.result('select * from Statsiun')
     .then(function (data) {
       res.status(200)
         .json({
@@ -28,7 +28,7 @@ function getAllStasiun(req, res, next) {
 
 function getSingleStasiun(req, res, next) {
   var StasiunID = req.params.id;
-  db.one('select * from Stasiun where id_statsiun = $1', StasiunID)
+  db.one('select * from Statsiun where id_statsiun = $1', StasiunID)
     .then(function (data) {
       res.status(200)
         .json({
@@ -43,7 +43,7 @@ function getSingleStasiun(req, res, next) {
 }
 
 function createStasiun(req, res, next) {
-  db.none('insert into Stasiun(alamat, lat, long, nama , id_Stasiun)' +
+  db.none('insert into Statsiun(alamat, lat, long, nama , id_Stasiun)' +
       'values(${alamat}, ${lat}, ${long}, ${nama} ,${id_Stasiun})',
     req.body)
     .then(function () {
@@ -59,7 +59,7 @@ function createStasiun(req, res, next) {
 }
 
 function updateStasiun(req, res, next) {
-  db.none('update Stasiun set alamat=$1, lat=$2, long=$3, nama=$4 where id_statsiun=$5',
+  db.none('update Statsiun set alamat=$1, lat=$2, long=$3, nama=$4 where id_statsiun=$5',
     [req.body.alamat,req.body.lat, req.body.long,req.body.nama, req.params.id])
     .then(function () {
       res.status(200)

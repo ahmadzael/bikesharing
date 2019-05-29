@@ -12,6 +12,11 @@ var db = require('./database');
 
 var apiLaporan = require('./api/laporan');
 var apiAcara = require('./api/acara');
+var apiPenugasan = require('./api/penugasan');
+var apiSepeda = require('./api/sepeda');
+var apiStasiun = require('./api/stasiun');
+var apiVoucher = require('./api/voucher');
+
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -126,6 +131,36 @@ app.get('/register',(req,res) =>{
 })
 
 //Rest API
+app.get('/api/acara', apiAcara.getAllAcara);
+app.get('/api/acara/:id', apiAcara.getSingleAcara);
+app.put('/api/acara/:id', apiAcara.updateAcara);
+app.post('/api/acara', apiAcara.createAcara);
+app.delete('/api/acara/:id', apiAcara.removeAcara);
+
+app.get('/api/penugasan', apiPenugasan.getAllPenugasan);
+app.get('/api/penugasan/:id', apiPenugasan.getSinglePenugasan);
+app.put('/api/penugasan/:id', apiPenugasan.updatePenugasan);
+app.post('/api/penugasan', apiPenugasan.createPenugasan);
+app.delete('/api/penugasan/:id', apiPenugasan.removePenugasan);
+
+app.get('/api/sepeda', apiSepeda.getAllSepeda);
+app.get('/api/sepeda/:id', apiSepeda.getSingleSepeda);
+app.put('/api/sepeda/:id', apiSepeda.updateSepeda);
+app.post('/api/sepeda', apiSepeda.createSepeda);
+app.delete('/api/Sepeda/:id', apiSepeda.removeSepeda);
+
+app.get('/api/stasiun', apiStasiun.getAllStasiun);
+app.get('/api/stasiun/:id', apiStasiun.getSingleStasiun);
+app.put('/api/stasiun/:id', apiStasiun.updateStasiun);
+app.post('/api/stasiun', apiStasiun.createStasiun);
+app.delete('/api/stasiun/:id', apiStasiun.removeStasiun);
+
+app.get('/api/Voucher', apiVoucher.getAllVoucher);
+app.get('/api/Voucher/:id', apiVoucher.getSingleVoucher);
+app.put('/api/Voucher/:id', apiVoucher.updateVoucher);
+app.post('/api/Voucher', apiVoucher.createVoucher);
+app.delete('/api/Voucher/:id', apiVoucher.removeVoucher);
+
 app.get('/api/acara', apiAcara.getAllAcara);
 app.get('/api/acara/:id', apiAcara.getSingleAcara);
 app.put('/api/acara/:id', apiAcara.updateAcara);
