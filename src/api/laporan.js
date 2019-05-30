@@ -7,7 +7,7 @@ module.exports = {
 
 
 function getAllLaporan(req, res, next) {
-    db.result('select * from Sepeda')
+    db.result('select * from laporan')
       .then(function (data) {
         res.status(200)
         .json({

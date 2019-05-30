@@ -26,7 +26,7 @@ function getAllSepeda(req, res, next) {
 
 function getSingleSepeda(req, res, next) {
   var SepedaID = req.params.id;
-  db.one('select * from Sepeda where ktp = $1', SepedaID)
+  db.one('select * from Sepeda where nomor = $1', SepedaID)
     .then(function (data) {
       res.status(200)
         .json({
@@ -41,8 +41,8 @@ function getSingleSepeda(req, res, next) {
 }
 
 function createSepeda(req, res, next) {
-  db.none('insert into Sepeda(email, nama, alamat, tgl_lahir , no_telp , ktp)' +
-      'values(${email}, ${nama}, ${alamat}, ${tgl_lahir}, ${no_telp}, ${ktp})',
+  db.none('insert into Sepeda(merek, jenis, status, id_statsiun , no_kartu_penyumbang , nomor)' +
+      'values(${merek}, ${jenis}, ${status}, ${id_statsiun}, ${no_kartu_penyumbang}, ${nomor})',
     req.body)
     .then(function () {
       res.status(200)
@@ -58,10 +58,10 @@ function createSepeda(req, res, next) {
 
 
 function updateSepeda(req, res, next) {
-  db.none('update Sepeda set email=$1, nama=$2, alamat=$3, tgl_lahir=$4, no_telp=$5 statsiun=$6 where ktp=$7',
-    [req.body.email,
-      req.body.nama, req.body.alamat,
-      req.body.tgl_lahir, req.body.no_telp, req.params.id])
+  db.none('update Sepeda set merek=$1, jenis=$2, status=$3, id_statsiun=$4, no_kartu_penyumbang=$5 where nomor=$6',
+    [req.body.merek,
+      req.body.jenis, req.body.status, 
+      req.body.no_kartu_penyumbang, req.params.id])
     .then(function () {
       res.status(200)
         .json({
