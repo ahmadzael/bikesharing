@@ -2,6 +2,8 @@ var db = require('../database');
 
 module.exports = {
   getAllPerson: getAllPerson,
+  getPetugas:getPetugas,
+  getAnggota:getAnggota,
   getSinglePerson: getSinglePerson,
   createPerson: createPerson,
   updatePerson: updatePerson,
@@ -11,6 +13,36 @@ module.exports = {
 
 function getAllPerson(req, res, next) {
   db.result('select * from Person')
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ALL Data'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
+function getPetugas(req, res, next) {
+  db.result('select * from Person , Pertugas where person.ktp = petugas.ktp')
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ALL Data'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
+function getAnggota(req, res, next) {
+  db.result('select * from Person , Anggota where person.ktp = anggota.ktp')
     .then(function (data) {
       res.status(200)
         .json({
