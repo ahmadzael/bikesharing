@@ -10,7 +10,22 @@ module.exports = {
 
 
 function getAllSepeda(req, res, next) {
-  db.result('select * from Sepeda')
+  db.result(`
+    SELECT 
+      sp.nomor as id,  
+      sp.merk as merk,
+      sp.jenis as jenis,
+      sp.status as status,
+      st.nama as statsiun,
+      st.id_statsiun as id_statsiun,
+      pe.nama as penyumbang
+    FROM sepeda as sp
+    JOIN statsiun as st
+    ON st.id_statsiun = sp.id_statsiun
+    JOIN anggota as an
+    ON sp.no_kartu_penyumbang = an.no_kartu
+    JOIN person as pe
+    ON pe.ktp = an.ktp`)
     .then(function (data) {
       res.status(200)
         .json({

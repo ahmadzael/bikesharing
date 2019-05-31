@@ -10,7 +10,20 @@ module.exports = {
 
 
 function getAllPenugasan(req, res, next) {
-  db.result('select * from Penugasan')
+  db.result(`
+      SELECT 
+      pn.ktp as ktp,  
+      pn.tgl_mulai as mulai,
+      pn.tgl_selesai as selesai,
+      ps.nama as petugas,
+      string_agg(st.nama, ', ') as stasiun,
+      string_agg(st.id_stasiun, ', ') as id_stasiun
+    FROM penugasan as pn
+    JOIN person as ps 
+    ON pn.ktp = ps.ktp
+    JOIN stasiun as st
+    ON st.id_stasiun = pn.id_stasiun
+    GROUP BY pn.ktp, pn.tgl_mulai, pn.tgl_selesai, ps.nama`)
     .then(function (data) {
       res.status(200)
         .json({

@@ -2,7 +2,12 @@ var db = require('../database');
 
 module.exports = {
   getAllPerson: getAllPerson,
+<<<<<<< HEAD
   getPersonLogin : getPersonLogin,
+=======
+  getPetugas:getPetugas,
+  getAnggota:getAnggota,
+>>>>>>> 98bd64281d8f6f44811e6a930de2bed7d8317b4f
   getSinglePerson: getSinglePerson,
   createPerson: createPerson,
   updatePerson: updatePerson,
@@ -25,6 +30,36 @@ db.tx(t => {
 
 function getAllPerson(req, res, next) {
   db.result('select * from Person')
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ALL Data'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
+function getPetugas(req, res, next) {
+  db.result('select * from Person , Pertugas where person.ktp = petugas.ktp')
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ALL Data'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
+function getAnggota(req, res, next) {
+  db.result('select * from Person , Anggota where person.ktp = anggota.ktp')
     .then(function (data) {
       res.status(200)
         .json({

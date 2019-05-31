@@ -10,7 +10,22 @@ module.exports = {
 
 
 function getAllAcara(req, res, next) {
-  db.result('select * from acara')
+  db.result(`
+      SELECT 
+        ac.id_acara as id, 
+        ac.judul as judul, 
+        ac.deskripsi as deskripsi, 
+        ac.tgl_mulai as mulai,
+        ac.tgl_akhir as selesai, 
+        ac.is_free as gratis,
+        string_agg(st.nama, ', ') as stasiun,
+        string_agg(st.id_statsiun, ', ') as id_statsiun
+      FROM acara as ac
+      JOIN acara_statsiun as ast
+      ON ac.id_acara = ast.id_acara
+      JOIN statsiun as st
+      ON st.id_statsiun = ast.id_statsiun
+      GROUP BY id`)
     .then(function (data) {
       res.status(200)
         .json({
@@ -41,20 +56,27 @@ function getSingleAcara(req, res, next) {
 }
 
 function createAcara(req, res, next) {
-  db.none('insert into acara(judul, deskripsi, tgl_mulai, tgl_akhir , is_free , id_acara)' +
-      'values(${judul}, ${deskripsi}, ${tgl_mulai}, ${tgl_akhir}, ${is_free}, ${id_acara})',
-    req.body)
-    .then(function () {
-      res.status(200)
-        .json({
-          status: 'success',
-          message: 'Inserted one Acara'
-        });
-    })
+  db.tx(t => {
+    // this.ctx = transaction config + state context;
+    return t.batch([
+        t.none('insert into acara(judul, deskripsi, tgl_mulai, tgl_akhir , is_free , id_acara)' +
+            'values(${judul}, ${deskripsi}, ${tgl_mulai}, ${tgl_akhir}, ${is_free}, ${id_acara})',
+           req.body),
+        t.none('INSERT INTO acara_statsiun(id_acara, id_statsiun)' + 'VALUES(${id_acara}, ${id_stasiun})',req.body)
+    ]);
+      })
+      .then(function () {
+        res.status(200)
+          .json({
+            status: 'success',
+            message: 'Inserted one Acara'
+          });
+      })
     .catch(function (err) {
       return next(err);
     });
 }
+
 
 function updateAcara(req, res, next) {
   db.none('update acara set judul=$1, deskripsi=$2, tgl_mulai=$3, tgl_akhir=$4, is_free=$5 statsiun=$6 where id_acara=$7',
