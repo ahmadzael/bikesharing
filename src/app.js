@@ -1,8 +1,9 @@
 const path = require('path')
 const express = require('express')
-const exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars')
 const hbs = require('hbs')
 const bodyParser = require('body-parser')
+const morgan = require('morgan')
 
 
 var router = express.Router();
@@ -54,6 +55,7 @@ app.use(express.static(publicDirectoryPath))
 app.use(express.static(bower_components))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(morgan('dev'))
 
 app.get('',(req,res)=>{
     res.render('login')
@@ -168,21 +170,37 @@ app.put('/api/acara/:id', apiAcara.updateAcara);
 app.post('/api/acara', apiAcara.createAcara);
 app.delete('/api/acara/:id', apiAcara.removeAcara);
 
-//app.get('/api/person/:login', apiAcara.getPersonLogin);
+app.get('/api/person/:login', apiPerson.getPersonLogin);
 
 // app.get('/api/sepeda',db.getAllSepeda);
 
 //routing
 //app.use('/api/laporan', require('./api/laporan'))
 
-app.get('/api/laporan',apiLaporan.getAllLaporan);
+// app.get('/api/laporan',apiLaporan.getAllLaporan);
+
+// //web routes
+// app.use(express.static(path.join(__dirname, '../client/build')))
+// app.get('*', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
+// })
 
 
-//router.get('/api/acara', db.getAllAcara);
-// router.get('/api/acara/:id', db.getSingleAcara);
-// router.post('/api/acara', db.createAcara);
-// router.put('/api/acara/:id', db.updateAcara);
-// router.delete('/api/acara/:id', db.removeAcara);
+// //404 handler
+// app.use((req, res, next) => {
+// 	const error = new Error('not found')
+// 	next(error)
+// })
+
+// //error handler
+// app.use((error, req, res, next) => {
+// 	res.status(404)
+// 	res.json({
+// 		error: {
+// 			message: error.message
+// 		}
+// 	})
+// })
 
 
 module.exports = router;
@@ -190,3 +208,4 @@ module.exports = router;
 app.listen(port,() => {
     console.log('server is running on port'+ port)
 })
+

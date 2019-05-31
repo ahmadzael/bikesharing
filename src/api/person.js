@@ -1,8 +1,9 @@
 var db = require('../database');
+const config = require('dotenv').config().parsed
 
 module.exports = {
   getAllPerson: getAllPerson,
-  //getPersonLogin : getPersonLogin,
+  getPersonLogin : getPersonLogin,
   getPetugas:getPetugas,
   getAnggota:getAnggota,
   getSinglePerson: getSinglePerson,
@@ -10,6 +11,39 @@ module.exports = {
   updatePerson: updatePerson,
   removePerson: removePerson
 };
+
+function getPersonLogin(req, res, next) {
+  const login = {
+    ktp: req.body.ktp,
+    email: req.body.email
+  }
+  if (login.ktp === config.ADMIN_KTP && login.email === config.ADMIN_EMAIL) {
+		const person = {
+			ktp: config.ADMIN_KTP,
+			email: config.ADMIN_EMAIL,
+			role: config.ADMIN_ROLE,
+			nama: config.ADMIN_NAMA
+		}
+    return res.status(200).json(person)
+  } else{
+    db.tx(t => {
+      return t.batch([
+          t.one('SELECT * FROM person WHERE ktp = $1 AND email = $2',[ login.ktp, login.email ]),
+      ]);
+        })
+        .then(function (data) {
+          res.status(200)
+            .json({
+              status: 'success',
+              data: data,
+              message: 'Retrieved user'
+            });
+        })
+      .catch(function (err) {
+        return next(err);
+      });
+  } 
+}
 
 function getAllPerson(req, res, next) {
   db.result('select * from Person')
