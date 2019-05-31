@@ -1,0 +1,50 @@
+.table thead {
+    font-weight: bold;
+    text-align: center
+}
+
+.react-datepicker {
+    font-size: 1.3rem !important;
+  }
+  
+  .react-datepicker__current-month {
+    font-size: 1.5rem !important;
+  }
+  
+  .react-datepicker__header {
+    padding-top: 6px !important;
+    background-color: #2471c1 !important;
+  }
+
+  .react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header,
+  .react-datepicker__day-name {
+      color: white !important
+  }
+  
+  .react-datepicker__navigation {
+    top: 13px !important;
+  }
+  
+  .react-datepicker__day-name, .react-datepicker__day {
+    margin: 0.5rem !important;
+  }
+
+  .react-datepicker__day--selected {
+    background-color: #2471c1 !important
+  }
+
+  
+.chip-body {
+  height: 30px !important;
+}
+
+.multiSelect {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.input-box {
+  font-size: 1.5rem
+}
