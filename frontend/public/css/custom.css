@@ -12,10 +12,10 @@
 }
 
 .background-blue {
-	background-color: #1c5692 !important;
+	background-color: #f39c12 !important;
 }
 .background-semi-blue {
-	background-color: #2471c1 !important;
+	background-color: #f39c12 !important;
 }
 
 .margin-icon {
@@ -30,8 +30,8 @@
     font-weight: 500;
     font-size: 16px;
     border-radius: 20px;
-    border-color: #2471c1;
-    background-color: #2471c1;
+    border-color: #f39c12;
+    background-color: #f39c12;
 }
 .btn-download {
     width: 12.5%;
@@ -41,8 +41,8 @@
     font-weight: 500;
     font-size: 16px;
     border-radius: 20px;
-    border-color: #2471c1;
-    background-color: #2471c1;
+    border-color: #f39c12;
+    background-color: #f39c12;
 }
 .btn-download-long {
     color: white;
@@ -51,8 +51,8 @@
     font-weight: 500;
     font-size: 16px;
     border-radius: 20px;
-    border-color: #2471c1;
-    background-color: #2471c1;
+    border-color: #f39c12;
+    background-color: #f39c12;
 }
 .btn-action {
 	width: 25.5%;
@@ -86,12 +86,12 @@
 }
 
 .text-white:hover {
-    color: #2471c1
+    color: #f39c12
 }
 
 .button-orange {
-    border-color: #2471c1;
-    background-color: #2471c1;
+    border-color: #f39c12;
+    background-color: #f39c12;
 }
 
 .button-orange:hover {
@@ -105,6 +105,6 @@
 }
 
 .button-green:hover {
-    border-color: #2471c1;
-    background-color: #2471c1 
+    border-color: #f39c12;
+    background-color: #f39c12 
 }

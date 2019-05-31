@@ -16,10 +16,11 @@ var apiPenugasan = require('./api/penugasan');
 var apiSepeda = require('./api/sepeda');
 var apiStasiun = require('./api/stasiun');
 var apiVoucher = require('./api/voucher');
+var apiPerson = require('./api/person')
 
 
 const app = express()
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 4000
 
 //define path
 const publicDirectoryPath = path.join(__dirname,'../public')
@@ -166,6 +167,8 @@ app.get('/api/acara/:id', apiAcara.getSingleAcara);
 app.put('/api/acara/:id', apiAcara.updateAcara);
 app.post('/api/acara', apiAcara.createAcara);
 app.delete('/api/acara/:id', apiAcara.removeAcara);
+
+app.get('/api/person/:login', apiAcara.getPersonLogin);
 
 // app.get('/api/sepeda',db.getAllSepeda);
 

@@ -67,11 +67,11 @@ class Login extends React.Component {
 					<div className='login-box'>
 						<div className='login-logo'>
 							<a href='/'>
-								<b>Bike</b>Sharing
+								<b>Sewa Sepeda Universitas Indonesia</b>
 							</a>
 						</div>
 						<div className='login-box-body background-blue'>
-							<p className='login-box-msg login-title'>Masuk untuk memulai</p>
+							<p className='login-box-msg login-title'>Masukan KTP dan Email Untuk Login</p>
 							<div className='form-group has-feedback'>
 								<input type='text' className='form-control' placeholder='Nomor KTP' id='ktp' />
 								<span className='fa fa-user form-control-feedback' />
@@ -87,7 +87,7 @@ class Login extends React.Component {
 										onClick={() => this._onLoginClick()}
 									>
 										<span className='fa fa-sign-in margin-icon' />
-										Masuk
+										Login
 									</button>
 								</div>
 								<div className='col-xs-4 pull-left'>
@@ -96,7 +96,7 @@ class Login extends React.Component {
 										href='/register'
 									>
 										<span className='fa fa-sign-in margin-icon' />
-										Daftar
+										Register
 									</a>
 								</div>
 							</div>
