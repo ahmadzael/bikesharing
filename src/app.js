@@ -168,7 +168,7 @@ app.put('/api/acara/:id', apiAcara.updateAcara);
 app.post('/api/acara', apiAcara.createAcara);
 app.delete('/api/acara/:id', apiAcara.removeAcara);
 
-app.get('/api/person/:login', apiAcara.getPersonLogin);
+//app.get('/api/person/:login', apiAcara.getPersonLogin);
 
 // app.get('/api/sepeda',db.getAllSepeda);
 

@@ -2,31 +2,14 @@ var db = require('../database');
 
 module.exports = {
   getAllPerson: getAllPerson,
-<<<<<<< HEAD
-  getPersonLogin : getPersonLogin,
-=======
+  //getPersonLogin : getPersonLogin,
   getPetugas:getPetugas,
   getAnggota:getAnggota,
->>>>>>> 98bd64281d8f6f44811e6a930de2bed7d8317b4f
   getSinglePerson: getSinglePerson,
   createPerson: createPerson,
   updatePerson: updatePerson,
   removePerson: removePerson
 };
-
-db.tx(t => {
-  // this.ctx = transaction config + state context;
-  return t.batch([
-      t.none('SELECT * FROM person WHERE ktp = $1 AND email = $2', [true, 123]),
-      t.none('INSERT INTO audit(status, id) VALUES($1, $2)', ['active', 123])
-  ]);
-})
-.then(data => {
-  // success;
-})
-.catch(error => {
-  console.log('ERROR:', error);
-});
 
 function getAllPerson(req, res, next) {
   db.result('select * from Person')
